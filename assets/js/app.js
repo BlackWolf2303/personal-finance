@@ -147,6 +147,21 @@ function init() {
         updateCalc();
     });
 
+    // restore saved percentages
+    [1, 2, 3, 4].forEach(function (i) {
+        const saved = localStorage.getItem('jar_pct_' + i);
+        if (saved !== null) {
+            document.getElementById('pct-' + i).value = saved;
+            document.getElementById('slider-' + i).value = saved;
+        }
+    });
+
+    function savePcts() {
+        [1, 2, 3, 4].forEach(function (i) {
+            localStorage.setItem('jar_pct_' + i, document.getElementById('pct-' + i).value);
+        });
+    }
+
     [1, 2, 3, 4].forEach(function (i) {
         const slider = document.getElementById('slider-' + i);
         const pctInput = document.getElementById('pct-' + i);
@@ -159,6 +174,7 @@ function init() {
             this.value = v;
             pctInput.value = v;
             updateCalc();
+            savePcts();
         });
         pctInput.addEventListener('input', function () {
             let v = parseInt(this.value);
@@ -175,6 +191,7 @@ function init() {
             this.value = v;
             slider.value = v;
             updateCalc();
+            savePcts();
         });
     });
 

@@ -123,18 +123,28 @@ function init() {
     const incomeInput = document.getElementById('income-input');
     incomeInput._raw = 0;
 
-    incomeInput.addEventListener('focus', function () {
-        if (this._raw > 0) this.value = String(this._raw);
-    });
     incomeInput.addEventListener('input', function () {
-        const digits = this.value.replace(/[^0-9]/g, '');
+        const cursorPos = this.selectionStart;
+        const oldValue = this.value;
+        const digits = oldValue.replace(/[^0-9]/g, '');
         this._raw = parseInt(digits) || 0;
-        updateCalc();
-    });
-    incomeInput.addEventListener('blur', function () {
-        if (this._raw > 0) {
-            this.value = new Intl.NumberFormat('vi-VN').format(this._raw);
+
+        const formatted = this._raw > 0 ? new Intl.NumberFormat('vi-VN').format(this._raw) : '';
+        const dotsBeforeCursor = (oldValue.substring(0, cursorPos).match(/\./g) || []).length;
+        const digitsBeforeCursor = cursorPos - dotsBeforeCursor;
+
+        this.value = formatted;
+
+        // restore cursor accounting for newly inserted/removed dots
+        let newCursor = formatted.length;
+        let counted = 0;
+        for (let i = 0; i < formatted.length; i++) {
+            if (formatted[i] !== '.') counted++;
+            if (counted === digitsBeforeCursor) { newCursor = i + 1; break; }
         }
+        this.setSelectionRange(newCursor, newCursor);
+
+        updateCalc();
     });
 
     [1, 2, 3, 4].forEach(function (i) {

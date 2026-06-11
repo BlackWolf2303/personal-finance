@@ -1,0 +1,96 @@
+body {
+    background: #f5f0e8;
+}
+
+.step-bg-num {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    position: absolute;
+    top: -0.5rem;
+    right: 1rem;
+    pointer-events: none;
+    user-select: none;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 99px;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.jar-bar {
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover {
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+@keyframes shake-x {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-5px); }
+    40%       { transform: translateX(5px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(3px); }
+}
+
+.slider-maxed {
+    animation: shake-x 0.4s ease;
+}
+
+.slider-maxed::-webkit-slider-thumb {
+    background: #ef4444 !important;
+    border-color: #fee2e2 !important;
+}
+
+.warn-tip {
+    display: none;
+    font-size: 0.72rem;
+    color: #ef4444;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    text-align: right;
+    animation: fade-in-out 1.6s ease forwards;
+}
+
+@keyframes fade-in-out {
+    0%   { opacity: 0; transform: translateY(-4px); }
+    15%  { opacity: 1; transform: translateY(0); }
+    70%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}

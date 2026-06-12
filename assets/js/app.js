@@ -60,16 +60,6 @@ function updateHook() {
     monthlyEl.textContent = monthlyStr;
     resultEl.textContent = resultStr;
 
-    // shrink font for long numbers — also strip sm:text-* to prevent responsive override
-    const sizeClass = (s) => s.length > 14 ? 'text-xs' : s.length > 11 ? 'text-sm' : 'text-lg';
-    const applySize = (el, str) => {
-        el.className = el.className
-            .replace(/\bsm:text-(xs|sm|lg)\b/g, '')
-            .replace(/\btext-(xs|sm|lg)\b/g, sizeClass(str))
-            .replace(/\s+/g, ' ').trim();
-    };
-    applySize(monthlyEl, monthlyStr);
-    applySize(resultEl, resultStr);
     document.getElementById('hook-from-jar').textContent = isExample
         ? 'ví dụ minh hoạ'
         : 'từ Hũ 1 của bạn (' + pct1 + '%)';

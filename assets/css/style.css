@@ -94,3 +94,7 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
+
+#hook-monthly, #hook-result {
+    font-size: clamp(0.78rem, 0.5rem + 1.5vw, 1rem);
+}

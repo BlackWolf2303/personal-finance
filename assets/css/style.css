@@ -96,5 +96,11 @@ input[type="number"] {
 }
 
 #hook-monthly, #hook-result {
-    font-size: clamp(0.78rem, 0.5rem + 1.5vw, 1rem);
+    font-size: 0.75rem;
+}
+
+@media (min-width: 470px) {
+    #hook-monthly, #hook-result {
+        font-size: 1rem;
+    }
 }

@@ -371,7 +371,7 @@
                         <div class="font-bold text-xl text-emerald-400" aria-hidden="true">→</div>
                         <div
                             class="flex-1 min-w-0 text-center rounded-xl py-3 px-2 bg-emerald-100 border border-emerald-200">
-                            <div class="text-xs text-emerald-600 mb-1">Sau 10 năm</div>
+                            <div class="text-xs text-emerald-600 mb-1">Sau <span id="hook-years-label">10</span> năm</div>
                             <div id="hook-result"
                                 class="text-sm sm:text-lg font-black text-emerald-800 leading-tight break-all"
                                 aria-live="polite">292.000.000 ₫</div>
@@ -392,6 +392,19 @@
                                     class="text-emerald-700 font-semibold">120tr</span></span>
                             <span>Lãi kép: <span id="hook-gain"
                                     class="text-emerald-700 font-semibold">+172tr</span></span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-emerald-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <label for="years-slider" class="text-xs font-semibold text-emerald-700">Thời gian tích luỹ</label>
+                            <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full"><span id="hook-years-badge">10</span> năm</span>
+                        </div>
+                        <input type="range" id="years-slider" min="1" max="30" value="10"
+                            style="background: linear-gradient(to right, #10b981 33.33%, #ddd7ce 33.33%)"
+                            class="mb-1">
+                        <div class="flex justify-between text-xs text-emerald-400">
+                            <span>1 năm</span>
+                            <span>30 năm</span>
                         </div>
                     </div>
                 </div>
